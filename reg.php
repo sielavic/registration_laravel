@@ -6,8 +6,8 @@ public function postReg(Request $request)
                 'email.required' => 'Поле Email обязательно для заполнения',
                 'password.required' => 'Поле Пароль обязательно для заполнения',
                 'name.string' => 'Поле Имя обязательно должно быть строкой',
-                'email.unique:users' => 'Такой Email уже используется',
-                'password.min:8' => 'Пароль слишком короткий',
+                'email.unique' => 'Такой Email уже используется',
+                'password.min' => 'Пароль слишком короткий',
         ];
 
         $validatedData = $this->validate($request, [
