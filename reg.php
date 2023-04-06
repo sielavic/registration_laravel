@@ -1,11 +1,20 @@
 public function postReg(Request $request)
     {
         
-        $validatedData = $request->validate([
+        $messages = [
+                'name.required' => 'Поле Имя обязательно для заполнения',
+                'email.required' => 'Поле Email обязательно для заполнения',
+                'password.required' => 'Поле Пароль обязательно для заполнения',
+                'name.string' => 'Поле Имя обязательно должно быть строкой',
+                'email.unique:users' => 'Такой Email уже используется',
+                'password.min:8' => 'Пароль слишком короткий',
+        ];
+
+        $validatedData = $this->validate($request, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
-        ]);
+        ],$messages);
 
 
         $user = User::create([
